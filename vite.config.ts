@@ -11,5 +11,5 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: "./src/setupTests.ts",
   },
-  base: "/fireart_test/",
+  base: "./",
 });
