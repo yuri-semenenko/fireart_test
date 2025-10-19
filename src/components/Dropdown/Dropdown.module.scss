@@ -1,0 +1,147 @@
+$color-text: #1f2833;
+$color-placeholder: #909eb2;
+$color-border: #d1d5db;
+$color-border-hover: #9ca3af;
+$color-bg: #fff;
+$color-bg-hover: #f3f4f6;
+$color-bg-active: #e7f6fd;
+$color-shadow: 0px 4px 6px rgba(0, 0, 0, 0.08);
+$scroll-track-color: #fff;
+$scroll-thumb-color: #77849a;
+$scroll-thumb-border-color: #fff;
+$scroll-size: 20px;
+
+$radius: 6px;
+$height-item: 32px;
+$height-button: 34px;
+
+.dropdown {
+  position: relative;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+  font-size: 14px;
+  color: $color-text;
+}
+
+.trigger {
+  width: 100%;
+  height: $height-button;
+  padding: 0 40px 0 14px;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  background-color: $color-bg;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  text-align: left;
+
+  &:hover:not(:disabled) {
+    border-color: $color-border-hover;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    background: #f9fafb;
+    color: #9ca3af;
+    cursor: not-allowed;
+  }
+}
+
+.value {
+  color: $color-text;
+}
+
+.placeholder {
+  color: $color-placeholder;
+}
+
+.chevron {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%) scaleY(1);
+  color: $color-placeholder;
+  transition: transform 0.325s ease;
+}
+
+.open .chevron {
+  transform: translateY(-50%) scaleY(-1);
+}
+
+.listbox {
+  background: $color-bg;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  box-shadow: $color-shadow;
+  margin: 0;
+  padding: 0;
+  max-height: var(--max-height);
+  list-style: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  overflow-y: auto;
+}
+
+.listbox::-webkit-scrollbar {
+  width: $scroll-size;
+}
+
+.listbox::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 1px;
+}
+
+.listbox::-webkit-scrollbar-thumb {
+  background: $scroll-thumb-color;
+  border-radius: 4px;
+  border: 9px solid $scroll-thumb-border-color;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .listbox {
+    scrollbar-color: $scroll-thumb-color $scroll-track-color;
+  }
+}
+
+.option {
+  height: $height-item;
+  padding: 0 14px;
+  margin: 2px 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: $color-text;
+  background: transparent;
+  user-select: none;
+  transition: background-color 0.1s ease;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:hover,
+  &.selected {
+    background-color: $color-bg-active;
+  }
+
+  &.disabled {
+    color: #9ca3af;
+    cursor: not-allowed;
+  }
+}
+
+.active {
+  background-color: $color-bg-active;
+}
